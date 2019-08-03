@@ -1,0 +1,29 @@
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8881/eureka/
+
+zuul:
+  ignoredServices: '*'
+  prefix: /api
+  routes:
+    license: /license/**
+    organization: /organization/**
+
+ribbon:
+  ReadTimeout: 6000
+  ConnectTimeout: 6000
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 6000
+
+
